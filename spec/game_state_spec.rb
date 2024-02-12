@@ -29,6 +29,28 @@ module Engine
       Find.find("#{FIXTURES_DIR}/#{title}").find { |f| File.basename(f) == "#{described_class}.json" }
     end
 
+    describe '1822PNW' do
+      describe 147_728 do
+        it 'minors can merge in the backroom negotations edge case' do
+          game = game_at_action(game_file, 277)
+
+          action = {
+            'type' => 'choose',
+            'entity' => '10',
+            'entity_type' => 'corporation',
+            'choice' => '3',
+          }
+
+          require 'pry-byebug'
+          binding.pry
+
+          game.process_action(action)
+
+          expect(true).to eq(false)
+        end
+      end
+    end    
+
     describe '18Chesapeake' do
       describe 1277 do
         it 'closes Cornelius Vanderbilt when SRR buys a train' do
