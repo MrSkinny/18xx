@@ -32,7 +32,9 @@ module Engine
     describe '1822PNW' do
       describe 147_728 do
         it 'minors can merge in the backroom negotations edge case' do
+          puts game_file
           game = game_at_action(game_file, 277)
+          puts "before test - current action id: #{game.current_action_id}"
 
           action = {
             'type' => 'choose',
@@ -43,8 +45,8 @@ module Engine
 
           require 'pry-byebug'
           binding.pry
-
           game.process_action(action)
+          puts "after test - current action id: #{game.current_action_id}"
 
           expect(true).to eq(false)
         end
